@@ -1,5 +1,5 @@
 <h1>Listing Secret Codes</h1>
-<% if can? :update, secret_code %>
+<% if can? :create, SecretCode %>
 <%= link_to  new_secret_code_path, :class => [:btn, :"btn-success"] do |l|%>
       <i class="icon-plus-sign icon-white"></i>
       New Secret code
@@ -18,10 +18,10 @@
     <td><%= secret_code.user.try(:email)%></td>
     <td><%= secret_code.code%></td>
     <td><%= link_to 'Show', secret_code %></td>
-    <% if can? :update, secret_code %>
+    <% if can? :update, SecretCode %>
     <td><%= link_to 'Edit', edit_secret_code_path(secret_code) %></td>
     <% end %>
-    <% if can? :update, secret_code %>
+    <% if can? :update, SecretCode %>
     <td><%= link_to 'Destroy', secret_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
