@@ -5,4 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-admin = User.create(email: "admin@grouptable.com", password: "password",:first_name=>"Admin",:secret_code=>"10",:role=>'admin') unless User.find_by_email("admin@grouptable.com")
+secret_code = SecretCode.create(:code=>1)
+admin = User.create(email: "admin@grouptable.com", password: "password",:first_name=>"Admin",:secret_code=>"1",:role=>'admin') unless User.find_by_email("admin@grouptable.com").present?

@@ -11,10 +11,12 @@ class User < ActiveRecord::Base
   has_one :source_code, :class_name =>'SecretCode', :foreign_key => 'user_id'
   after_create :create_secret_code
   def create_secret_code
-    source_code=SecretCode.find(secret_code)
-    source_code.user_id =self.id
-    source_code.save
-  end 
+   source_code=SecretCode.find_by_id(secret_code)
+   if source_code
+     source_code.user_id =self.id
+     source_code.save
+   end
+ end 
 
   def role?
     return true if self.role == 'admin'
